@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>原创教程 - 筑巢英语</title>
+  <link rel="canonical" href="https://teacher.nestenglish.com/tutorials.html">
+  <meta property="og:url" content="https://teacher.nestenglish.com/tutorials.html">
+  <link rel="stylesheet" href="app.css?v=24">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="index.html"><span class="brand-mark"><img src="assets/nest-logo.png" alt=""></span><span>筑巢英语备课资源库</span></a>
+      <nav class="nav"><a href="index.html">首页</a><a href="resources.html">资源</a><a class="active" href="tutorials.html">教程</a><a href="development.html">发展</a></nav>
+      <a class="partner" href="business.html">联系站长</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="wrap">
+        <h1>备课操作教程</h1>
+        <p class="lead">围绕 PPT、Word、视频、音频、PDF、字体和 AI，整理老师备课时真正会遇到的操作问题。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap tutorial-directory">
+        <aside class="filters" aria-label="教程专区">
+          <div class="filter-title">专区</div>
+          <div class="filter-list" data-tutorial-filters></div>
+        </aside>
+
+        <div class="tutorial-main">
+          <div class="resource-toolbar">
+            <input data-tutorial-search aria-label="搜索教程" placeholder="搜索：字体、视频、PDF、配音、AI、三线格">
+          </div>
+          <div class="article-list" data-tutorial-list></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="detail-panel" data-tutorial-panel hidden>
+    <div class="detail-backdrop" data-close-tutorial></div>
+    <aside class="detail-sheet" aria-label="教程详情">
+      <button class="detail-close" type="button" data-close-tutorial>关闭</button>
+      <div data-tutorial-detail></div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <div>© 2026 筑巢英语。原创教程、网站点评和分类标签未经许可不得转载或商用。</div>
+      <div>本站部分内容为第三方公开资源索引，仅提供信息整理及原始网页链接，不存储、不转载第三方资源文件。相关内容版权归原作者及权利人所有。如相关链接涉及侵权，请联系站长处理。</div>
+    </div>
+  </footer>
+
+  <script src="tutorials-data.js?v=4"></script>
+  <script src="tutorials.js?v=6"></script>
+</body>
+</html>

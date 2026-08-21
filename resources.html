@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>资源导航 - 筑巢英语</title>
+  <link rel="canonical" href="https://teacher.nestenglish.com/resources.html">
+  <meta property="og:url" content="https://teacher.nestenglish.com/resources.html">
+  <link rel="stylesheet" href="app.css?v=24">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="index.html"><span class="brand-mark"><img src="assets/nest-logo.png" alt=""></span><span>筑巢英语备课资源库</span></a>
+      <nav class="nav" aria-label="主导航"><a href="index.html">首页</a><a class="active" href="resources.html">资源</a><a href="tutorials.html">教程</a><a href="development.html">发展</a></nav>
+      <a class="partner" href="business.html">联系站长</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="wrap">
+        <h1>搜索资源</h1>
+        <p class="lead">像搜索结果一样浏览备课网站。评分和点评为本站编辑判断，第三方网站只做整理、点评和跳转。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap directory">
+        <aside class="filters" aria-label="资源筛选">
+          <div class="filter-title">资源目录</div>
+          <div class="filter-list" data-filters></div>
+        </aside>
+
+        <div>
+          <div class="resource-toolbar">
+            <input data-resource-search aria-label="搜索资源" placeholder="搜索网站、分类、标签或使用场景">
+            <select data-resource-sort aria-label="资源排序">
+              <option value="rating">按推荐指数</option>
+              <option value="name">按名称</option>
+              <option value="category">按分类</option>
+            </select>
+          </div>
+          <div class="quick-filter-label">标签筛选</div>
+          <div class="quick-filter-bar" data-quick-filters aria-label="标签筛选"></div>
+          <div class="result-summary" data-result-summary></div>
+          <div class="resource-list" data-resource-list></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="detail-panel" data-detail-panel hidden>
+    <div class="detail-backdrop" data-close-detail></div>
+    <aside class="detail-sheet" aria-label="资源详情">
+      <button class="detail-close" type="button" data-close-detail>关闭</button>
+      <div data-detail-content></div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <div>本站部分内容为第三方公开资源索引，仅提供信息整理及原始网页链接，不存储、不转载第三方资源文件。相关内容版权归原作者及权利人所有。如相关链接涉及侵权，请联系站长处理。</div>
+    </div>
+  </footer>
+
+  <script src="resources-data.js?v=10"></script>
+  <script src="resources.js?v=13"></script>
+</body>
+</html>
