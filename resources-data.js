@@ -106,7 +106,7 @@ window.resourceData = [
   ,{ name: "ESL-Kids", initials: "ESK", url: "https://www.esl-kids.com/", category: "教具素材", access: "海外资源", tags: ["免费", "国际资源", "单词卡"], desc: "单词卡、worksheet 和课堂活动生成工具，适合低龄英语课堂教具制作。" }
   ,{ name: "Lanternfish ESL", initials: "LF", url: "https://bogglesworldesl.com/", category: "教具素材", access: "海外资源", tags: ["免费", "国际资源", "worksheet"], desc: "老牌 ESL worksheet、游戏板和主题活动页网站，适合备基础词汇和语法活动。" }
   ,{ name: "Tools for Educators", initials: "TFE", url: "https://www.toolsforeducators.com/", category: "教具素材", access: "海外资源", tags: ["免费", "国际资源", "生成器"], desc: "Bingo、骰子、board game、crossword 等教具生成器，适合快速制作课堂活动材料。" }
-  ,{ name: "Super Simple Printables", initials: "SSP", url: "https://supersimple.com/free-printables/", category: "教具素材", access: "海外资源", tags: ["免费", "国际资源", "可打印"], desc: "歌曲、低龄英语和主题活动配套 printables，适合小学和幼儿英语课堂。" }
+  ,{ name: "Super Simple Printables", initials: "SSP", url: "https://supersimple.com/content-type/free-printables/", category: "教具素材", access: "海外资源", tags: ["免费", "国际资源", "可打印"], desc: "歌曲、低龄英语和主题活动配套 printables，适合小学和幼儿英语课堂。" }
   ,{ name: "Twisty Noodle", initials: "TN", url: "https://twistynoodle.com/", category: "教具素材", access: "海外资源", tags: ["免费", "国际资源", "可打印"], desc: "字母、涂色、手写和主题活动页，适合低龄英语启蒙和课堂延伸。" }
   ,{ name: "ESL Printables", initials: "ESP", url: "https://www.eslprintables.com/", category: "教具素材", access: "海外资源", tags: ["需注册", "国际资源", "worksheet"], desc: "教师上传的 worksheet 和课堂材料社区，资源多但需要注意积分、授权和质量筛选。" }
   ,{ name: "Teachers Pay Teachers", initials: "TPT", url: "https://www.teacherspayteachers.com/", category: "教具素材", access: "海外资源", tags: ["部分免费", "付费", "国际资源"], desc: "教师资源交易平台，适合找 flashcards、课堂活动包和节日主题材料，使用前需看授权。" }
