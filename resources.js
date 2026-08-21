@@ -75,6 +75,9 @@ const featuredRatings = {
 if (params.get("q")) {
   search.value = params.get("q");
 }
+if (["rating", "name", "category"].includes(params.get("sort"))) {
+  sort.value = params.get("sort");
+}
 
 function countFor(category) {
   if (category === "全部") return data.length;
@@ -355,7 +358,8 @@ function renderSummary(items) {
   const scope = active === "全部" ? "全部资源" : active;
   const view = quickOptions.find(option => option.id === quickActive)?.label || "全部结果";
   const query = term ? `，关键词“${term}”` : "";
-  const ranking = quickActive === "recommended" ? "，按编辑推荐指数排序" : "";
+  const sortLabel = sort.value === "name" ? "名称" : sort.value === "category" ? "分类" : "编辑推荐指数";
+  const ranking = quickActive === "recommended" ? `，按${sortLabel}排序` : "";
   const expanded = searchExpanded ? "，已自动扩大到全部资源" : "";
   summary.textContent = `找到 ${items.length} 个结果，范围：${scope}，条件：${view}${query}${ranking}${expanded}。`;
 }
@@ -387,7 +391,26 @@ function renderList() {
   }).join("") : `<div class="empty">暂时没有足够相关的资源。</div>`;
 }
 
+let lastFocused = null;
+
+function trapFocus(container, event) {
+  if (event.key !== "Tab") return;
+  const focusables = container.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
+  if (!focusables.length) return;
+  const first = focusables[0];
+  const last = focusables[focusables.length - 1];
+  const active = document.activeElement;
+  if (event.shiftKey && (active === first || active === container)) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && active === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
 function openDetail(item) {
+  lastFocused = document.activeElement;
   const rating = ratingFor(item);
   detailContent.innerHTML = `
     <div class="detail-head">
@@ -423,11 +446,14 @@ function openDetail(item) {
   `;
   detailPanel.hidden = false;
   document.body.classList.add("detail-open");
+  const closeButton = detailPanel.querySelector(".detail-close");
+  if (closeButton) closeButton.focus();
 }
 
 function closeDetail() {
   detailPanel.hidden = true;
   document.body.classList.remove("detail-open");
+  if (lastFocused && lastFocused.focus) lastFocused.focus();
 }
 
 function syncUrl() {
@@ -436,6 +462,7 @@ function syncUrl() {
   if (term) next.set("q", term);
   if (active !== "全部") next.set("category", active);
   if (quickActive !== "all") next.set("view", quickActive);
+  if (sort.value !== "rating") next.set("sort", sort.value);
   const query = next.toString();
   history.replaceState(null, "", query ? `?${query}` : window.location.pathname);
 }
@@ -445,6 +472,7 @@ filters.addEventListener("click", event => {
   if (!button) return;
   active = button.dataset.category;
   renderFilters();
+  renderQuickFilters();
   renderList();
   syncUrl();
 });
@@ -466,7 +494,10 @@ quickFilters.addEventListener("click", event => {
   syncUrl();
 });
 
-sort.addEventListener("change", renderList);
+sort.addEventListener("change", () => {
+  renderList();
+  syncUrl();
+});
 list.addEventListener("click", event => {
   if (event.target.closest("a")) return;
   const card = event.target.closest("[data-resource-id]");
@@ -483,6 +514,7 @@ list.addEventListener("keydown", event => {
 });
 
 closeDetailButtons.forEach(button => button.addEventListener("click", closeDetail));
+detailPanel.addEventListener("keydown", event => trapFocus(detailPanel, event));
 document.addEventListener("keydown", event => {
   if (event.key === "Escape" && !detailPanel.hidden) closeDetail();
 });

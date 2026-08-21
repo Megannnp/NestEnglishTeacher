@@ -87,7 +87,26 @@ function tutorialVisual(item) {
   `;
 }
 
+let tutorialLastFocused = null;
+
+function tutorialTrapFocus(container, event) {
+  if (event.key !== "Tab") return;
+  const focusables = container.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
+  if (!focusables.length) return;
+  const first = focusables[0];
+  const last = focusables[focusables.length - 1];
+  const active = document.activeElement;
+  if (event.shiftKey && (active === first || active === container)) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && active === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
 function openTutorial(item) {
+  tutorialLastFocused = document.activeElement;
   tutorialDetail.innerHTML = `
     <div class="detail-head">
       <div class="rank detail-rank">教</div>
@@ -118,11 +137,14 @@ function openTutorial(item) {
   `;
   tutorialPanel.hidden = false;
   document.body.classList.add("detail-open");
+  const closeButton = tutorialPanel.querySelector(".detail-close");
+  if (closeButton) closeButton.focus();
 }
 
 function closeTutorial() {
   tutorialPanel.hidden = true;
   document.body.classList.remove("detail-open");
+  if (tutorialLastFocused && tutorialLastFocused.focus) tutorialLastFocused.focus();
 }
 
 tutorialFilters.addEventListener("click", event => {
@@ -149,6 +171,7 @@ tutorialList.addEventListener("keydown", event => {
 });
 
 closeTutorialButtons.forEach(button => button.addEventListener("click", closeTutorial));
+tutorialPanel.addEventListener("keydown", event => tutorialTrapFocus(tutorialPanel, event));
 document.addEventListener("keydown", event => {
   if (event.key === "Escape" && !tutorialPanel.hidden) closeTutorial();
 });

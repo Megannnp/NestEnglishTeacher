@@ -1441,7 +1441,7 @@ footer {
   .search button,
   .visit { width: 100%; }
   .filters {
-    top: 106px;
+    top: 114px;
     grid-template-columns: 1fr;
     gap: 7px;
     margin-inline: -2px;
