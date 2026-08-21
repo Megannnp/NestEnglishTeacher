@@ -371,7 +371,7 @@ function renderList() {
     const rating = ratingFor(item);
     const id = data.indexOf(item);
     return `
-      <article class="resource result-card" role="button" tabindex="0" data-resource-id="${id}" aria-label="查看 ${item.name} 详情">
+      <article class="resource result-card" role="button" tabindex="0" data-resource-id="${id}" aria-label="查看 ${item.name} 详情" aria-haspopup="dialog">
         <div class="rank">#${index + 1}</div>
         <div class="result-body">
           <div class="resource-title">
